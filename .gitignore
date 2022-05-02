@@ -41,8 +41,6 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
-.cache-alfed
-__pycache__
 nosetests.xml
 coverage.xml
 *.cover
