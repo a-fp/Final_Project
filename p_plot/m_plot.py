@@ -13,7 +13,7 @@ def ploti(similar_song, column):
             medianprops=dict(color='darkorange',linewidth=3),
             )
     ax1.boxplot(similar_song.head(1)[column],zorder=2,medianprops=dict(color='lightcoral',linewidth=3))
-    ax1.set_ylim([similar_song.head(50)[column].min(), similar_song.head(50)[column].max()]) 
+    ax1.set_ylim([similar_song[column].min(), similar_song[column].max()]) 
     plt.title(column, 
         fontdict={'family': 'Gotham', 
                     'color' : 'dimgrey',

@@ -1,6 +1,6 @@
 import pandas as pd
 from p_acquisition import m_acquisition as mac
-from p_analisys import m_analisys as man
+from p_analysis import m_analisys as man
 from p_reporting import m_reporting as mre
 from p_wrangling import m_wrangling as mwr
 from p_plot import m_plot as mpl
@@ -10,10 +10,10 @@ import streamlit as st
 import warnings
 
 #Conexion Spotify
-username='Username'
-client_id = 'Client_id'
-client_secret = 'Client_Secret'
-user_id='User_id'
+username='alfed'
+client_id = 'f66be765be154592baccad01cdc5cdc9'
+client_secret = '89df095d4ec84ca6b64c26981552f198'
+user_id='314vazy3a7sqgzy5njvpop7zdchm'
 AUTH_URL = 'https://accounts.spotify.com/api/token'
 redirect_uri="http://localhost:8080"
 scope="playlist-modify-public playlist-modify-private ugc-image-upload"
@@ -32,13 +32,10 @@ playlist_mix='37i9dQZEVXcOx8nqzmzXjg'
 playlist_dancing='37i9dQZF1DWSX4baQVDQut'
 
 
-
 select = ['Happy', 'Booster', 'Sad', 'Relax', 'Motivation', 'Energy','Dancing', 'Drive', 'Mix','Own']
 plot=['danceability','energy','key','loudness','speechiness','acousticness','instrumentalness','liveness','valence','tempo','time_signature','mode']
 directory = './datasets/data_songs_clean.csv'
 summary= 'This is a playlist based on metrics such as: danceability, energy, loudness, acousticness, instrumentalness.  Enjoy it!'
-
-
 
 st.set_page_config(
      page_title="Spotify recommender",
@@ -78,7 +75,7 @@ with feel_1:
 
 
 with feel_2:
-    col1, col2, col3, col4, col5 = st.columns([2,1,3,2,2])
+    col1, col2, col3, col4, col5= st.columns([2,2,10,2,2])
     col1.image('./Images/image/12.jpg')
     col1.image('./Images/image/8.jpg')
     col1.image('./Images/image/4.jpg')
