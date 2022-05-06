@@ -10,10 +10,10 @@ import streamlit as st
 import warnings
 
 #Conexion Spotify
-username='alfed'
-client_id = 'f66be765be154592baccad01cdc5cdc9'
-client_secret = '89df095d4ec84ca6b64c26981552f198'
-user_id='314vazy3a7sqgzy5njvpop7zdchm'
+username=‘Username’
+client_id = ‘Client_id’
+client_secret = ‘Client_Secret’
+user_id=‘User_id’
 AUTH_URL = 'https://accounts.spotify.com/api/token'
 redirect_uri="http://localhost:8080"
 scope="playlist-modify-public playlist-modify-private ugc-image-upload"
