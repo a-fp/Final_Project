@@ -10,10 +10,10 @@ import streamlit as st
 import warnings
 
 #Conexion Spotify
-username=‘Username’
-client_id = ‘Client_id’
-client_secret = ‘Client_Secret’
-user_id=‘User_id’
+username='Username'
+client_id = 'Client_id'
+client_secret = 'Client_Secret'
+user_id='User_id'
 AUTH_URL = 'https://accounts.spotify.com/api/token'
 redirect_uri="http://localhost:8080"
 scope="playlist-modify-public playlist-modify-private ugc-image-upload"
@@ -30,9 +30,10 @@ playlist_motivation='37i9dQZF1DXdxcBWuJkbcy'
 playlist_energy='37i9dQZF1DWYp5sAHdz27Y'
 playlist_mix='37i9dQZEVXcOx8nqzmzXjg'
 playlist_dancing='37i9dQZF1DWSX4baQVDQut'
+playlist_summer='1hZVPBZijn8V7ZbiHyb1dx'
 
 
-select = ['Happy', 'Booster', 'Sad', 'Relax', 'Motivation', 'Energy','Dancing', 'Drive', 'Mix','Own']
+select = ['Happy', 'Booster', 'Sad', 'Relax', 'Motivation', 'Energy','Dancing', 'Drive', 'Mix','Summer','Own']
 plot=['danceability','energy','key','loudness','speechiness','acousticness','instrumentalness','liveness','valence','tempo','time_signature','mode']
 directory = './datasets/data_songs_clean.csv'
 summary= 'This is a playlist based on metrics such as: danceability, energy, loudness, acousticness, instrumentalness.  Enjoy it!'
@@ -82,7 +83,7 @@ with feel_2:
     col2.image('./Images/image/11.jpg')
     col2.image('./Images/image/7.jpg')
     col2.image('./Images/image/3.jpg')
-    feeling = col3.selectbox(" ",('Happy', 'Booster', 'Sad', 'Relax', 'Motivation', 'Energy', 'Dancing', 'Mix', 'Own'))
+    feeling = col3.selectbox(" ",('Happy', 'Booster', 'Sad', 'Relax', 'Motivation', 'Energy', 'Dancing', 'Mix','Summer','Own'))
     col4.image('./Images/image/10.jpg')
     col4.image('./Images/image/6.jpg')
     col4.image('./Images/image/2.jpg')
@@ -113,7 +114,7 @@ with feel_2:
         
             data_songs = mac.import_data(directory)
             if feeling == 'Own':
-                track_id = mac.sp.search(q='artist:' + artist + ' track:' + track, type='track')
+                track_id = sp.search(q='artist:' + artist + ' track:' + track, type='track')
                 ID = pd.DataFrame([track_id['tracks']['items'][0]['id']])
                 ID=ID.iloc[0][0]
             elif feeling == 'Happy':
@@ -140,6 +141,10 @@ with feel_2:
             elif feeling == 'Dancing':
                 songs = mac.get_id_songs(playlist_dancing,BASE_URL,access_token)
                 ID = mwr.selectRandom(songs)
+            elif feeling == 'Summer':
+                songs = mac.get_id_songs(playlist_summer,BASE_URL,access_token)
+                ID = mwr.selectRandom(songs)
+
 
             df_features= mac.song_features(ID,BASE_URL,access_token)
             df_features_clean = mwr.clean_df_features(df_features)
